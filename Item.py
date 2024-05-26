@@ -1,6 +1,6 @@
-from Entity import Entity
 from Effect import Effect
 from typing import List
+from entities.Entity import Entity
 
 
 class Item:

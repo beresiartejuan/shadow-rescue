@@ -1,4 +1,4 @@
-from EntityWithItems import EntityWithItems
+from .EntityWithItems import EntityWithItems
 from helper import clear
 
 
@@ -12,7 +12,7 @@ class Player(EntityWithItems):
     def showStatusBar(self):
         items = [
             "[Espacio Vacio]" if len(self.items) - 1 < i else self.items[i].__str__()
-            for i in range(3)
+            for i in range(4)
         ]
 
         bar = f"[Health: {self.health}] [Energy: {self.energy}]"
@@ -20,7 +20,8 @@ class Player(EntityWithItems):
 
         items_str = f"|{(" " * 4)}Items{(" " * 6)}{items[0]}{" " * (78 - 4 - 6 - 5 - len(items[0]))}|\n"
         items_str += f"|{" " * (4 + 6 + 5)}{items[1]}{" " * (78 - 4 - 6 - 5 - len(items[1]))}|\n"
-        items_str += f"|{" " * (4 + 6 + 5)}{items[2]}{" " * (78 - 4 - 6 - 5 - len(items[2]))}|"
+        items_str += f"|{" " * (4 + 6 + 5)}{items[2]}{" " * (78 - 4 - 6 - 5 - len(items[2]))}|\n"
+        items_str += f"|{" " * (4 + 6 + 5)}{items[3]}{" " * (78 - 4 - 6 - 5 - len(items[3]))}|"
 
         print("┌" + ("-" * 78) + "┐")
         print("|", end="")

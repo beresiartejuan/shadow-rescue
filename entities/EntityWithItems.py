@@ -19,7 +19,7 @@ class EntityWithItems(Entity):
         return super().get_damage(damage=damage)
 
     def add_item(self, item: Item) -> bool:
-        if len(self.items) >= 3:
+        if len(self.items) >= 4:
             return False
 
         self.items.append(item)

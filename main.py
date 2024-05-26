@@ -1,7 +1,8 @@
 from helper import *
 from Item import Item
-from Player import Player
 from Effect import HealthEffect
+from entities.Player import Player
+
 
 INIT_TEXT = """
 ┌---------------------------------------------------------------------------------┐
