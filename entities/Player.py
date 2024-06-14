@@ -17,11 +17,21 @@ class Player(EntityWithItems):
 
         bar = f"[Health: {self.health}] [Energy: {self.energy}]"
         location = "[Location: Masmorra I]"
+        items_str = ""
 
-        items_str = f"|{(" " * 4)}Items{(" " * 6)}{items[0]}{" " * (78 - 4 - 6 - 5 - len(items[0]))}|\n"
-        items_str += f"|{" " * (4 + 6 + 5)}{items[1]}{" " * (78 - 4 - 6 - 5 - len(items[1]))}|\n"
-        items_str += f"|{" " * (4 + 6 + 5)}{items[2]}{" " * (78 - 4 - 6 - 5 - len(items[2]))}|\n"
-        items_str += f"|{" " * (4 + 6 + 5)}{items[3]}{" " * (78 - 4 - 6 - 5 - len(items[3]))}|"
+        for s_item in items:
+            items_str += (
+                "|"
+                + (" " * 4)
+                + "Items"
+                + (" " * 6)
+                + s_item
+                + (" " * (78 - 4 - 6 - 5 - len(s_item)))
+                + "|"
+                + "\n"
+            )
+        else:
+            items_str = items_str[0:-1]
 
         print("┌" + ("-" * 78) + "┐")
         print("|", end="")
@@ -52,7 +62,7 @@ class Player(EntityWithItems):
 
             print(f"|  ¡Utilizaste [{self.items[index].name}]!")
 
-            if(self.items[index].uses == 0):
+            if self.items[index].uses == 0:
                 del self.items[index]
         except:
             print(f"|  ¡Utilizaste [Nada]!")
