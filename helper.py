@@ -1,6 +1,14 @@
 import sys, os, time
 
 
+def s(r: int):
+    return " " * r
+
+
+def c(char: str, r: int):
+    return char * r
+
+
 def clear():
     if os.name == "nt":
         os.system("cls")

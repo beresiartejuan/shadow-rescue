@@ -1,5 +1,5 @@
 from .EntityWithItems import EntityWithItems
-from helper import clear
+from helper import clear, s, c
 
 
 class Player(EntityWithItems):
@@ -15,42 +15,31 @@ class Player(EntityWithItems):
             for i in range(4)
         ]
 
-        bar = f"[Health: {self.health}] [Energy: {self.energy}]"
-        location = "[Location: Masmorra I]"
         items_str = ""
 
         for s_item in items:
-            items_str += (
-                "|"
-                + (" " * 4)
-                + "Items"
-                + (" " * 6)
-                + s_item
-                + (" " * (78 - 4 - 6 - 5 - len(s_item)))
-                + "|"
-                + "\n"
-            )
+            specific_space = s(63 - len(s_item))
+            items_str += f"|{s(4)}Items{s(6) + s_item + specific_space}|"
+            items_str += "\n"
         else:
             items_str = items_str[0:-1]
 
-        print("┌" + ("-" * 78) + "┐")
-        print("|", end="")
-        print(" " * 4, end="")
-        print("Status" + (" " * 5), end="")
-        print(bar, end="")
-        print(" " * (80 - 2 - 4 - 6 - 5 - len(bar)), end="")
-        print("|")
-        print("|" + (" " * 15) + location + (" " * (78 - 15 - len(location))) + "|")
-        print("|" + (" " * 78) + "|")
+        bar = f"[Health: {self.health}] [Energy: {self.energy}]"
+        location = "[Location: Masmorra I]"
+
+        print("┌" + c("-", 78) + "┐")
+        print("|" + s(4) + "Status" + s(5) + bar + s(63 - len(bar)) + "|")
+        print("|" + s(15) + location + s(78 - 15 - len(location)) + "|")
+        print("|" + s(78) + "|")
         print(items_str)
-        print("└" + ("-" * 78) + "┘")
+        print("└" + c("-", 78) + "┘")
 
     def showItemMenu(self):
         try:
             print("| ¿Deseas usar algún item?")
             options = enumerate(self.items)
             for key, item in options:
-                print("|" + " " * 2 + f"[{key}: {item.name}]")
+                print("|" + s(2) + f"[{key}: {item.name}]")
 
             print("|  [Cualquier otra tecla para no usar ninguno]")
             print("|")
