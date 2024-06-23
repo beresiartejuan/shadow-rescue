@@ -1,18 +1,15 @@
 from typing import List
-from Item import Item, Entity
+from Items.Item import Item
+from Entities.Entity import Entity
 
 
 class EntityWithItems(Entity):
 
     def __init__(self, *, health: int = 0, attack: int = 0, energy: int = 0) -> None:
-        super()
-        self.health = health
-        self.attack = attack
-        self.energy = energy
+        super().__init__(health=health, attack=attack, energy=energy)
         self.items: List[Item] = []
 
     def get_damage(self, damage: int) -> None:
-
         for item in self.items:
             damage -= item.defense
 

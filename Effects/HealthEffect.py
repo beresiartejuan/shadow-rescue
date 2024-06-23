@@ -1,12 +1,5 @@
-from entities.Entity import Entity
-
-class Effect:
-
-    def __init__(self, *, name: str, uses: int = 0):
-        self.uses = uses
-        self.name = name
-
-    def use(self, entity: Entity) -> None: ...
+from Effects.Effect import Effect
+from Entities.Entity import Entity
 
 
 class HealthEffect(Effect):
